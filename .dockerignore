@@ -1,0 +1,7 @@
+.github
+.gitignore
+.idea
+.pre-commit-config.yaml
+media/*
+*.json
+*.env
