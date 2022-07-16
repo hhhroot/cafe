@@ -70,6 +70,9 @@ AUTH_USER_MODEL = "users.User"
 INSTALLED_APPS += [
     # installed apps
     "rest_framework",
+    "phonenumber_field",
+
     # local_apps
     "users.apps.UsersConfig",
+    "cafes.apps.CafesConfig",
 ]
