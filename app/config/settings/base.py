@@ -63,16 +63,25 @@ STATICFILES_DIRS = [str(BASE_DIR / "static")]
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 MEDIA_ROOT = str(ROOT_DIR / "media")
 MEDIA_URL = "/media/"
+SECRET_KEY = env.str("DJANGO_SECRET_KEY")
 
-DATABASES = {"default": env.db("DATABASE_URL")}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 AUTH_USER_MODEL = "users.User"
 
 INSTALLED_APPS += [
     # installed apps
     "rest_framework",
-    "phonenumber_field",
 
     # local_apps
     "users.apps.UsersConfig",
     "cafes.apps.CafesConfig",
 ]
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": ("core.authentications.AutoLoginAuthentication",),
+}
